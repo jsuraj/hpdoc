@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, Text, ActivityIndicator, ScrollView } from "react-native";
+import { View, StyleSheet, ActivityIndicator, ScrollView } from "react-native";
 import axios from 'axios';
 
 import AppBar from '../components/AppBar';
@@ -66,7 +66,7 @@ export default class App extends React.Component {
     return (
       <View>
         <AppBar />
-        { (!this.state.loaded && this.state.newsItems.length==0) ? <ActivityIndicator /> :
+        { (!this.state.loaded && this.state.newsItems.length===0) ? <ActivityIndicator /> :
           <ScrollView>
             <View style={styles.body}>
               {

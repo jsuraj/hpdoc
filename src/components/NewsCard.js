@@ -27,6 +27,7 @@ const NewsCard = ({article, no}) => {
 
   const getDomainUrl = (url) => {
     if(url) {
+      // eslint-disable-next-line
       const domain = url.split(/^https?:\/\/([^\/?#]+)(?:[\/?#]|$)/)[1]
       return domain || 'n/a'
     } else {
@@ -36,10 +37,10 @@ const NewsCard = ({article, no}) => {
 
   const openUrl = (url) => {
     if(url !== '' || url !== 'n/a') {
-      if(Platform.OS == 'web') {
+      if(Platform.OS === 'web') {
         window.open(url, '_blank');
       }
-      if(Platform.OS == 'android') {
+      if(Platform.OS === 'android') {
         Linking.openURL(url).catch(error => console.log('error', error));
       }
     }
