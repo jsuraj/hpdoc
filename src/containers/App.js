@@ -1,12 +1,19 @@
 import React from "react";
 import { View, StyleSheet, Text, ActivityIndicator, ScrollView } from "react-native";
 import axios from 'axios';
+
 import AppBar from '../components/AppBar';
 import NewsCard from '../components/NewsCard';
+import LoadMore from '../components/LoadMore';
+import Footer from '../components/Footer';
 
 const styles = StyleSheet.create({
   body: {
-    flex : 1,
+    flex: 1
+  },
+  buttonContainer: {
+    flex: 1,
+    justifyContent: 'center'
   }
 });
 
@@ -36,17 +43,42 @@ export default class App extends React.Component {
     });
   }
 
+  loadMore = () => {
+    console.log('loadMore called');
+    this.setState({loaded: false});
+    let page = this.state.page + 1;
+    let url = `https://hn.algolia.com/api/v1/search_by_date?tags=front_page&page=${page}`;
+    axios.get(url)
+    .then((response) => {
+      const previousItems = this.state.newsItems;
+      this.setState({
+        newsItems: [...previousItems, ...response.data.hits],
+        loaded: true,
+        page: page
+      });
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+  }
+
   render() {
     return (
       <View>
         <AppBar />
-        { !this.state.loaded ? <ActivityIndicator /> :
+        { (!this.state.loaded && this.state.newsItems.length==0) ? <ActivityIndicator /> :
           <ScrollView>
             <View style={styles.body}>
               {
                 this.state.newsItems.map((article, i) => <NewsCard key={Math.random()} article={article} no={i} />)
               }
+              <View style={styles.buttonContainer}>
+                {!this.state.loaded ? <ActivityIndicator/> :
+                  <LoadMore onLoadMore={this.loadMore}/>
+                }
+              </View>
             </View>
+            <Footer/>
           </ScrollView>
         }
       </View>

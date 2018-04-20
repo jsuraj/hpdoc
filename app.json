@@ -4,6 +4,8 @@
     "sdkVersion": "26.0.0",
     "android": {
       "package": "com.jsuraj.hnews"
-    }    
+    }
   },
+  "name": "reactnativewebstarter",
+  "displayName": "HNews"
 }
