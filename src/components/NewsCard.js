@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, Text, Platform, Linking } from 'react-native';
 // import data from '../data/news';
 
 const styles = StyleSheet.create({
@@ -34,11 +34,22 @@ const NewsCard = ({article, no}) => {
     }
   }
 
+  const openUrl = (url) => {
+    if(url !== '' || url !== 'n/a') {
+      if(Platform.OS == 'web') {
+        window.open(url, '_blank');
+      }
+      if(Platform.OS == 'android') {
+        Linking.openURL(url).catch(error => console.log('error', error));
+      }
+    }
+  }
+
   return (
     <View style={styles.card}>
       <Text>
         <Text style={styles.title}>{no+1+'. '}</Text>
-        <Text style={styles.title}>{article.title+' '}</Text>
+        <Text style={styles.title} onPress={() => { openUrl(article.url)}}>{article.title+' '}</Text>
         <Text style={styles.url}>{'( '+getDomainUrl(article.url)+' )'}</Text>
       </Text>
       <Text>

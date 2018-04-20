@@ -44,7 +44,7 @@ export default class App extends React.Component {
           <ScrollView>
             <View style={styles.body}>
               {
-                this.state.newsItems.map((article, i) => <NewsCard key={Math.random()} article={article} no={i}/>)
+                this.state.newsItems.map((article, i) => <NewsCard key={Math.random()} article={article} no={i} />)
               }
             </View>
           </ScrollView>
