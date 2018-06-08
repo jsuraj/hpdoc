@@ -31,7 +31,7 @@ const NewsCard = ({article, no}) => {
       const domain = url.split(/^https?:\/\/([^\/?#]+)(?:[\/?#]|$)/)[1]
       return domain || 'n/a'
     } else {
-      return ''
+      return null
     }
   }
 
@@ -51,7 +51,7 @@ const NewsCard = ({article, no}) => {
       <Text>
         <Text style={styles.title}>{no+1+'. '}</Text>
         <Text style={styles.title} onPress={() => { openUrl(article.url)}}>{article.title+' '}</Text>
-        <Text style={styles.url}>{'( '+getDomainUrl(article.url)+' )'}</Text>
+        <Text style={styles.url}>{ getDomainUrl(article.url) ? '('+getDomainUrl(article.url)+')' : ''}</Text>
       </Text>
       <Text>
         <Text style={styles.bottomLine}>{article.points+' points by '+article.author}</Text>
