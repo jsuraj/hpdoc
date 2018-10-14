@@ -17,7 +17,7 @@ const AppBar = () => {
 
   return (
     <View style={styles.appbar}>
-      <Text style={styles.title}>AppName</Text>
+      <Text style={styles.title}>Hacker News</Text>
     </View>
   )
 }
