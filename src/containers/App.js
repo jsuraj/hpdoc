@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, ActivityIndicator, ScrollView } from "react-native";
+import { View, StyleSheet, ActivityIndicator, ScrollView, Platform } from "react-native";
 import axios from 'axios';
 
 import AppBar from '../components/AppBar';
@@ -78,7 +78,9 @@ export default class App extends React.Component {
                 }
               </View>
             </View>
-            <Footer/>
+            {(Platform.OS === 'android') &&
+              <Footer/>
+            }
           </ScrollView>
         }
       </View>
