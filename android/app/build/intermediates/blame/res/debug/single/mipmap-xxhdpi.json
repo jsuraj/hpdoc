@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/home/suraj/apps/hpdoc/android/app/build/intermediates/res/merged/debug/mipmap-xxhdpi/ic_launcher.png",
+        "source": "/home/suraj/apps/hpdoc/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/jsuraj/native/hpdoc/android/app/build/intermediates/res/merged/debug/mipmap-xxhdpi/ic_launcher.png",
+        "source": "/home/jsuraj/native/hpdoc/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png"
+    }
+]
